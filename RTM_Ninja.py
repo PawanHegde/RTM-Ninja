@@ -114,7 +114,7 @@ class RTM_Ninja:
     def get_tasks(self):
         print("Trying to get the tasks in your inbox")
         response = self.call_rtm_func(method='rtm.tasks.getList', auth_token=self.token)
-        print(response)
+        print(response['tasks'])
         
     def call_rtm_func(self, method=None, auth_token=None, scheme='json', frob=None, list_id=None, task_filter=None):
         if method == None:
@@ -151,10 +151,10 @@ class RTM_Ninja:
 if __name__ == "__main__":
     ninja = RTM_Ninja()
 
-    #if ninja.token_is_valid() == False:
-     #   ninja.get_new_token()
-      #  ninja.save_token_to_file()
+    if ninja.token_is_valid() == False:
+        ninja.get_new_token()
+        ninja.save_token_to_file()
         
-#    ninja.create_timeline()
-#    ninja.get_list_of_lists()
+    ninja.create_timeline()
+    ninja.get_list_of_lists()
     ninja.get_tasks()
